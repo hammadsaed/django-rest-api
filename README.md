@@ -1,2 +1,2 @@
-# recipe-app-api
-Recipe app api django project
+# django-rest-api
+Django rest apis projecct
