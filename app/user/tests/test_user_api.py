@@ -121,11 +121,11 @@ class PrivateUserApiTests(TestCase):
     """Test the private features of the user API."""
 
     def setUp(self):
-        self.user = {
-            'name': 'Test Name',
-            'email': 'test@example.com',
-            'password': 'test-user-password123'
-        }
+        self.user = create_user(
+            name='Test Name',
+            email='test@example.com',
+            password='test-user-password123'
+        )
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
 
@@ -135,8 +135,8 @@ class PrivateUserApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, {
-            'name': self.user['name'],
-            'email': self.user['email'],
+            'name': self.user.name,
+            'email': self.user.email,
         })
 
     def test_post_me_not_allowed(self):
