@@ -52,7 +52,7 @@ class RecipeSerializer(serializers.ModelSerializer):
         for ingredient in ingredients:
             ingredient_obj, created = Ingredient.objects.get_or_create(
                 user=auth_user, **ingredient)
-            recipe.tags.add(ingredient_obj)
+            recipe.ingredients.add(ingredient_obj)
 
     def create(self, validated_data):
         """Create a recipe."""
